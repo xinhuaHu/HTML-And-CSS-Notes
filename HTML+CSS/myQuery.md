@@ -68,10 +68,10 @@ document.getElementsByClassName = document.getElementsByClassName ? document.get
 
 /**
  * 对传递进行的盒子模型对象进行X轴的移动
-  * 
-* @param obj 形参，表示这个函数需要操作的标签
-  * @param target 操作标签需要移动的X坐标
-  */ function animationX(obj ,target) {
+ * 
+ * @param obj 形参，表示这个函数需要操作的标签
+ * @param target 操作标签需要移动的X坐标
+ */ function animationX(obj ,target) {
 
     obj.timer = setInterval(function () {
         var speed = (target - obj.offsetLeft) / 10;
@@ -88,10 +88,10 @@ document.getElementsByClassName = document.getElementsByClassName ? document.get
 
 /**
  * 对传递进行的盒子模型对象进行Y轴的移动
-  * 
-* @param obj 形参，表示这个函数需要操作的标签
-  * @param target 操作标签需要移动的Y坐标
-  */ function animationY(obj ,target) {
+ * 
+ * @param obj 形参，表示这个函数需要操作的标签
+ * @param target 操作标签需要移动的Y坐标
+ */ function animationY(obj ,target) {
 
     obj.timer = setInterval(function () {
         var speed = (target - obj.offsetTop) / 10;
