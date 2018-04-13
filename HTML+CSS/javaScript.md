@@ -240,9 +240,6 @@
          new Date().getgetMilliseconds()
          new Date().valueOf()
          ```
-
-         ​
-
    -    JSON(以键值对出现的一种数据格式)
 
        -   创建
@@ -341,9 +338,8 @@
 3. 变量
 
    -   形参
-
-
    -   实参
+
 
 4. 函数
 
@@ -355,8 +351,6 @@
        (function(){})();
        var fn = new function('alert();');
        ```
-
-       ​
 
 #### 定时器
 
@@ -466,8 +460,6 @@
         }
         ```
 
-        ​
-
         -   属性操作
 
         ```javascript
@@ -498,8 +490,6 @@
         </html>
         ```
 
-        ​
-
         ```java
         var p = document.getElementsByTagName('p')[0];
         p.onclick = function(){
@@ -510,23 +500,6 @@
         	window.location.href = url;
         }
         ```
-
-#### 事件
-
-```
-	onclick
-	onfocus
-	onblur
-	onscroll
-	onmouseover
-	onmouseout
-	onmouseenter
-	onmouseleave
-	oninput
-	onchange
-	scrollTo(x, y)//模拟滚动条件滚动的事件，x和y参数都必须要提供。分别表示left和top的值
-	click() //模拟鼠标的点击事件
-```
 
 #### 三大家族
 
@@ -551,11 +524,186 @@
     -   scrollTop，距离页面顶部的高度
     -   scrollLeft，距离页面左侧的宽度
     -   获取方式
-        -   document.body.scrollTop或document.body.scrollLeft没有写DTD的情况才可以获取到具体的值，如果有DTD只能获取到0
+        -   document.body.scrollTop或document.body.scrollLeft，没有写DTD的情况才可以获取到具体的值，如果有DTD只能获取到
         -   document.documentElement.scrollTop或document.documentElement.scrollLeft
-        -   window.pageYOffset或window.pageXOffsetIE支持不好
+        -   window.pageYOffset或window.pageXOffset，IE支持不好
 
-3.  ​
+3.  client
+
+    -   clientWidth ，width + padding 
+    -   clientHeight ，height + padding 
+    -   clientX 
+    -   clientY 
+
+#### 事件
+
+-   onclick
+
+    ```
+    等于实现了onmousedown+onmouseup
+    ```
+
+-   onmouseup
+
+    ```
+    鼠标松开时会触发事件
+    ```
+
+-   onmousedown
+
+    ```
+    鼠标按下时会触发事件
+    ```
+
+-   onfocus
+
+    ```
+    onfocus 事件在对象获得焦点时发生
+    ```
+
+-   onblur
+
+    ```
+    onblur 事件会在对象失去焦点时发生。
+    ```
+
+-   onscroll
+
+    ```
+    当用户滚动指定的元素时，会发生 scroll 事件。
+    scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。
+    scroll() 方法触发 scroll 事件，或规定当发生 scroll 事件时运行的函数。
+    ```
+
+-   onmouseover
+
+    ```
+    onmouseover 事件会在鼠标指针移动到指定的对象上时发生。
+    语法：onmouseover="SomeJavaScriptCode"
+    ```
+
+-   onmouseout
+
+    ```
+    onmouseout 事件会在鼠标指针移出指定的对象时发生。
+    语法：onmouseout="SomeJavaScriptCode"
+    ```
+
+-   onmouseenter
+
+    ```
+    当鼠标指针穿过元素时，会发生 mouseenter 事件。
+    该事件大多数时候会与 mouseenter 事件一起使用。
+    ```
+
+-   onmouseleave
+
+    ```
+    当鼠标指针离开元素时，会发生 mouseleave 事件。
+    该事件大多数时候会与 mouseleave 事件一起使用。
+    ```
+
+-   onmousermove
+
+    ```
+    鼠标移动就会触发该事件
+    ```
+
+-   oninput
+
+    ```
+    HTML5中的标准事件，不过IE9以下的浏览器是不支持oninput事件的。
+    ```
+
+-   onchange
+
+    ```
+    只在键盘或者鼠标操作改变对象属性，且失去焦点时触发
+    ```
+
+-   scrollTo(x, y)
+
+    ```
+    模拟滚动条件滚动的事件，x和y参数都必须要提供。分别表示left和top的值
+    ```
+
+-   click() 
+
+    ```
+    模拟鼠标的点击事件
+    ```
+
+-   window.onload
+
+    ```
+    onload只能添加在window对象上，页面加载完成会触发这个事件
+    ```
+
+-   window.onscroll
+
+    ```
+    onscroll一般添加在window对象上，当滚动条发生改变时会触发该事件
+    ```
+
+-   window.onresize
+
+    ```
+    onresize只添加在window对象上，当浏览器大小发生改变时会触发该事件 
+    ```
+
+
+-   冒泡
+
+    ```
+    当一个元素上的事件被触发的时候，比如说鼠标点击了一个按钮，同样的事件将会在那个元素的所有祖先元素中被触发。这一过程被称为事件冒泡；这个事件从原始元素开始一直冒泡到DOM树的最上层。(BUG)
+    ```
+
+    -   阻止冒泡
+
+        ```
+        event.stopPropagation() Chrome, Firefox或IE11阻止事件冒泡
+        event.cancelBubble = true IE10及以下阻止事件冒泡
+        ```
+
+        ```javascript
+        /*兼容代码*/
+        var event = event || window.event;
+        if(event && event.stopPropagation){
+        	event.stopPropagation();
+        }else{
+        	event.cancelBubble = true;
+        }
+        ```
+
+-   事件监听
+
+    -   addEventListenner
+
+        ```javascript
+        /*语法：addEventListenner(事件源,事件驱动,捕获)
+        事件不需要写on
+        捕获默认使用false，从里往外进行冒泡，true从外到里冒泡
+        IE8及之前浏览器不支持使用attachEvent做兼容
+        */
+
+        document.addEventListenenr('click',fn,flase);
+        ```
+
+    -   removeEventListenner
+
+        ```javascript
+        /*语法：removeEventListenner((事件源,事件驱动)
+        IE678不支持，使用detachEvent做兼容
+        */
+
+        document.removeEventListenner('click',fn);
+        ```
+
+-   ​
+
+-   ​
+
+
 
 #### 面向对象
 
